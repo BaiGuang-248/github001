@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie的封装</title>
+</head>
+
+<body>
+    <button id="cn">中文</button>
+    <button id="en">英文</button>
+
+    <script type="module">
+        import { set } from './cookie.js';
+        const cnBtn = document.getElementById('cn');
+        const enBtn = document.getElementById('en');
+
+        cnBtn.addEventListener(
+            'click',
+            () => {
+                set('language', 'cn', {
+                    maxAge: 2592000
+                });
+                window.location = './002html';
+            },
+            false
+        );
+
+        enBtn.addEventListener(
+            'click',
+            () => {
+                set('language', 'en', {
+                    maxAge: 2592000
+                });
+                window.location = './002.html';
+            },
+            false
+        );
+
+    </script>
+</body>
+
+</html>

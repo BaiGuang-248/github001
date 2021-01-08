@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            width: 300px;
+            margin: 50px auto;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        #login {
+            background-color: green;
+            color: white;
+        }
+
+        #delete {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <span>用户名:</span><input type="text" value="" placeholder="请输入用户名" id="input">
+        <br>
+        <br>
+        <button id="login">登录</button>
+        <button id="delete">删除</button>
+    </form>
+
+    <script type="module">
+        import { set, get, remove } from './js/cookie.js';
+
+        const input = document.getElementById('input');
+        const login = document.getElementById('login');
+        const Delete = document.getElementById('delete');
+
+        if (document.cookie) {
+            input.value = get('用户名')
+        };
+
+        login.addEventListener('click', () => {
+            set('用户名', input.value, {
+                maxAge: 7 * 24 *3600
+            });
+            // window.location = './index.html';
+        },false);
+
+        Delete.addEventListener('click', () => {
+            remove('用户名');
+            // window.location = './index.html';
+        });
+    </script>
+</body>
+
+</html>
